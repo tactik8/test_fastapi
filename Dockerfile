@@ -35,7 +35,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Select the Flask app to run
 # To do: update flask app reference
 
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 test.test:app
+CMD exec gunicorn -k uvicorn.workers.UvicornWorker --bind :$PORT --workers 1 --threads 8 --timeout 0 test.test:app
 
 # [END run_helloworld_dockerfile]
 # [END cloudrun_helloworld_dockerfile]
